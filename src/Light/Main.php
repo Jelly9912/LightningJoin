@@ -14,15 +14,13 @@ use pocketmine\entity\Entity;
 class Main extends PluginBase implements Listener {
 
     public function onEnable(){
-    $this->getServer()->getLogger()->info("LightingJoin enabled!");
-    $this->getServer()->getPluginManager()->registerEvents($this, $this);
-
+    	$this->getLogger()->info("LightingJoin enabled!");
+    	$this->getServer()->getPluginManager()->registerEvents($this, $this);
     }
    
-    public function onJoin(PlayerJoinEvent $e)
-		{
-			$p = $e->getPlayer();
-		$light = new AddEntityPacket();
+    public function onJoin(PlayerJoinEvent $e){
+	$p = $e->getPlayer();
+	$light = new AddEntityPacket();
         $light->type = 93;
         $light->eid = Entity::$entityCount++;
         $light->metadata = array();
@@ -35,5 +33,6 @@ class Main extends PluginBase implements Listener {
         $light->y = $p->y;
         $light->z = $p->z;
         $p->dataPacket($light);
-		}
-	}
+    	
+    }
+}
