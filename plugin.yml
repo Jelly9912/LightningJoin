@@ -1,0 +1,6 @@
+name: LightningJoin
+version: 0.1
+api: 1.12.0
+main: Light\Main
+author: Jelly9912
+description: Lightning on player join ! :D
