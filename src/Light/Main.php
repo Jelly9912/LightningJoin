@@ -37,8 +37,8 @@ class Main extends PluginBase implements Listener {
      }
     	
     public function onRespawn(PlayerRespawnEvent $e){
-   $p = $e->getPlayer();
-  $light = new AddEntityPacket();
+        $p = $e->getPlayer();
+        $light = new AddEntityPacket();
         $light->type = 93;
         $light->eid = Entity::$entityCount++;
         $light->metadata = array();
