@@ -4,6 +4,7 @@ namespace Light;
 
 use pocketmine\plugin\PluginBase;
 use pocketmine\event\player\PlayerJoinEvent;
+use pocketmine\event\player\PlayerRespawnEvent;
 use pocketmine\event\Listener;
 use pocketmine\network\protocol\AddEntityPacket;
 use pocketmine\network\protocol\SetTimePacket;
@@ -33,6 +34,22 @@ class Main extends PluginBase implements Listener {
         $light->y = $p->y;
         $light->z = $p->z;
         $p->dataPacket($light);
+     }
     	
-    }
-}
+    public function onRespawn(PlayerRespawnEvent $e){
+   $p = $e->getPlayer();
+  $light = new AddEntityPacket();
+        $light->type = 93;
+        $light->eid = Entity::$entityCount++;
+        $light->metadata = array();
+        $light->speedX = 0;
+        $light->speedY = 0;
+        $light->speedZ = 0;
+        $light->yaw = $p->getYaw();
+        $light->pitch = $p->getPitch();
+        $light->x = $p->x;
+        $light->y = $p->y;
+        $light->z = $p->z;
+        $p->dataPacket($light);
+     }	
+  }
