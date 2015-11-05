@@ -6,7 +6,6 @@ use pocketmine\plugin\PluginBase;
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
 use pocketmine\event\player\PlayerJoinEvent;
-use pocketmine\event\player\PlayerRespawnEvent;
 use pocketmine\event\Listener;
 use pocketmine\network\protocol\AddEntityPacket;
 use pocketmine\network\protocol\SetTimePacket;
