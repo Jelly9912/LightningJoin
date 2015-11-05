@@ -3,6 +3,8 @@
 namespace Light;
 
 use pocketmine\plugin\PluginBase;
+use pocketmine\command\Command;
+use pocketmine\command\CommandSender;
 use pocketmine\event\player\PlayerJoinEvent;
 use pocketmine\event\player\PlayerRespawnEvent;
 use pocketmine\event\Listener;
@@ -18,7 +20,33 @@ class Main extends PluginBase implements Listener {
     	$this->getLogger()->info("LightingJoin enabled!");
     	$this->getServer()->getPluginManager()->registerEvents($this, $this);
     }
-   
+   public function onCommand(CommandSender $sender,Command $cmd,$label,array $args) {
+    if((strtolower($cmd->getName()) == "strike") && isset($args[0])) {
+      if($this->getServer()->getPlayer($args[0]) instanceof Player) {
+        $sender->sendMessage("Player not connected");
+       } else {
+        $player = $this->getServer()->getPlayer($args[0]);
+        $level = $player->getLevel();
+        $light = new AddEntityPacket();
+        $light->type = 93;
+        $light->eid = Entity::$entityCount++;
+        $light->metadata = array();
+        $light->speedX = 0;
+        $light->speedY = 0;
+        $light->speedZ = 0;
+        $light->yaw = $player->getYaw();
+        $light->pitch = $player->getPitch();
+        $light->x = $player->x;
+        $light->y = $player->y;
+        $light->z = $player->z;
+        foreach($level->getPlayers() as $pl){
+            $player->dataPacket($light);
+        }
+      }
+      return true;
+    }
+  }    
+      
     public function onJoin(PlayerJoinEvent $e){
 	$p = $e->getPlayer();
         $level ＝ $p->getLevel();
@@ -41,7 +69,7 @@ class Main extends PluginBase implements Listener {
     	
     public function onRespawn(PlayerRespawnEvent $e){
         $p = $e->getPlayer();
-$level ＝ $p->getLevel();
+        $level ＝ $p->getLevel();
         $light = new AddEntityPacket();
         $light->type = 93;
         $light->eid = Entity::$entityCount++;
