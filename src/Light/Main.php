@@ -66,24 +66,4 @@ class Main extends PluginBase implements Listener {
             $p->dataPacket($light);
         } 
      }
-    	
-    public function onDeath(EntityDeathEvent $e){
-        $p = $e->getEntity();
-        $level ＝ $p->getLevel();
-        $light = new AddEntityPacket();
-        $light->type = 93;
-        $light->eid = Entity::$entityCount++;
-        $light->metadata = array();
-        $light->speedX = 0;
-        $light->speedY = 0;
-        $light->speedZ = 0;
-        $light->yaw = $p->getYaw();
-        $light->pitch = $p->getPitch();
-        $light->x = $p->x;
-        $light->y = $p->y;
-        $light->z = $p->z;
-        foreach($level->getPlayers() as $pl){
-            $p->dataPacket($light);
-        }
-     }	
   }
