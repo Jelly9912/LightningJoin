@@ -1,4 +1,5 @@
 # LightningJoin
 Spawn ligtning on players join and respawn over them in pocketmine server
+#Commands
 
-If you have some ideas, please create issue
+/strike <player> - make a lightning over player
