@@ -1,9 +1,9 @@
 name: LightningJoin
-version: 0.2
+version: 0.3
 api: 1.13.0
 main: Light\Main
 author: Jelly9912
-description: Lightning on player join and respawn
+description: Lightning on player join and death
 commands:
   strike:
     usage: /strike <player>
