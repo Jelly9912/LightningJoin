@@ -67,8 +67,8 @@ class Main extends PluginBase implements Listener {
         } 
      }
     	
-    public function onRespawn(PlayerRespawnEvent $e){
-        $p = $e->getPlayer();
+    public function onDeath(EntityDeathEvent $e){
+        $p = $e->getEntity();
         $level ＝ $p->getLevel();
         $light = new AddEntityPacket();
         $light->type = 93;
