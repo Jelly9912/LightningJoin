@@ -48,7 +48,7 @@ class Main extends PluginBase implements Listener {
       
     public function onJoin(PlayerJoinEvent $e){
 	$p = $e->getPlayer();
-        $level ＝ $p->getLevel();
+        $level = $p->getLevel();
 	$light = new AddEntityPacket();
         $light->type = 93;
         $light->eid = Entity::$entityCount++;
