@@ -39,7 +39,7 @@ class Main extends PluginBase implements Listener {
         $light->y = $player->y;
         $light->z = $player->z;
         foreach($level->getPlayers() as $pl){
-            $player->dataPacket($light);
+            $pl->dataPacket($light);
         }
       }
       return true;
@@ -62,7 +62,7 @@ class Main extends PluginBase implements Listener {
         $light->y = $p->y;
         $light->z = $p->z;
         foreach($level->getPlayers() as $pl){
-            $p->dataPacket($light);
+            $pl->dataPacket($light);
         } 
      }
   }
