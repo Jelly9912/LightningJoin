@@ -16,7 +16,7 @@ use pocketmine\entity\Entity;
 class Main extends PluginBase implements Listener {
 
     public function onEnable(){
-    	$this->getLogger()->info("LightingJoin enabled!");
+    	$this->getLogger()->info("LightningJoin enabled!");
     	$this->getServer()->getPluginManager()->registerEvents($this, $this);
     }
    public function onCommand(CommandSender $sender,Command $cmd,$label,array $args) {
