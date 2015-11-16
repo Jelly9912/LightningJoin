@@ -21,9 +21,7 @@ class Main extends PluginBase implements Listener {
     }
    public function onCommand(CommandSender $sender,Command $cmd,$label,array $args) {
     if((strtolower($cmd->getName()) == "strike") && isset($args[0])) {
-      if($this->getServer()->getPlayer($args[0]) instanceof Player) {
-        $sender->sendMessage("Player not connected");
-       } else {
+      if($sender->hasPermission("fakedead.command")){
         $player = $this->getServer()->getPlayer($args[0]);
         $level = $player->getLevel();
         $light = new AddEntityPacket();
@@ -38,13 +36,14 @@ class Main extends PluginBase implements Listener {
         $light->x = $player->x;
         $light->y = $player->y;
         $light->z = $player->z;
-        foreach($level->getPlayers() as $pl){
-            $pl->dataPacket($light);
-        }
+        foreach($level->getPlayers() as $player){
+            $player->dataPacket($light);
       }
-      return true;
+    }else{
+      $sender->sendMessage("You do not have permission to use this command");
     }
-  }    
+  }
+}
       
     public function onJoin(PlayerJoinEvent $e){
 	$p = $e->getPlayer();
