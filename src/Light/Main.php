@@ -21,7 +21,7 @@ class Main extends PluginBase implements Listener {
     }
    public function onCommand(CommandSender $sender,Command $cmd,$label,array $args) {
     if((strtolower($cmd->getName()) == "strike") && isset($args[0])) {
-      if($sender->hasPermission("fakedead.command")){
+      if($sender->hasPermission("strike.command")){
         $player = $this->getServer()->getPlayer($args[0]);
         $level = $player->getLevel();
         $light = new AddEntityPacket();
