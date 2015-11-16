@@ -3,9 +3,11 @@ version: 0.3
 api: 1.13.0
 main: Light\Main
 author: Jelly9912
-description: Lightning on player join and death
+description: Lightning on player join and command
 commands:
   strike:
-    usage: /strike <player>
-    default: op
+    default: OP
     description: Make a lightning over player
+permissions:
+  strike.command:
+    default: OP
