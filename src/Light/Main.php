@@ -12,6 +12,7 @@ use pocketmine\network\protocol\SetTimePacket;
 use pocketmine\network\protocol\TextPacket;
 use pocketmine\network\protocol\AddPlayerPacket;
 use pocketmine\entity\Entity;
+use pocketmine\Player;
 
 class Main extends PluginBase implements Listener {
 
@@ -22,6 +23,7 @@ class Main extends PluginBase implements Listener {
    public function onCommand(CommandSender $sender,Command $cmd,$label,array $args) {
     if((strtolower($cmd->getName()) == "strike") && isset($args[0])) {
       if($sender->hasPermission("strike.command")){
+      	if($args[0] instanceof Player){
         $player = $this->getServer()->getPlayer($args[0]);
         $level = $player->getLevel();
         $light = new AddEntityPacket();
@@ -37,7 +39,8 @@ class Main extends PluginBase implements Listener {
         $light->y = $player->y;
         $light->z = $player->z;
         foreach($level->getPlayers() as $player){
-            $player->dataPacket($light);
+         $player->dataPacket($light);
+        }
       }
     }else{
       $sender->sendMessage("You do not have permission to use this command");
